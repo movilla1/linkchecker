@@ -1,4 +1,14 @@
 \section{System Requirements}
+
+\subsection{Customer Requirements}
+The system will be a web interface that allows linkback checking, it should be able to handle several "projects" where the links will be listed and show it's status.
+
+\begin{figure}[ht!]
+	\includegraphics[width=\textwidth]{images/backlinkappfiverrexplained}
+	\caption{User provided details}
+\end{figure}
+
+\subsection{Requirement Analysis and elicitation}
 The following table lists the user requirements from the original system request.
 \begin{enumerate}
 	\item The system shall allow the unique user identification
@@ -22,12 +32,18 @@ The following table lists the user requirements from the original system request
 \section{System Design}
 
 \subsection{Entity Relationship Diagram}
-
+Please refer to figure \ref{fig:er}
+\begin{figure}[ht!]
+	\includegraphics[width=\textwidth]{images/Entity-relationship-diagram-Linkchecker}
+	\caption{System Entites and Relationships}
+	\label{fig:er}
+\end{figure}
 \subsection{Use Cases}
-
+Please see figure \ref{fig:uc}
 \begin{figure}[ht!]
 	\includegraphics[width=\textwidth]{images/Use-Cases-Linkchecker}
 	\caption{System use cases}
+	\label{fig:uc}
 \end{figure}
 
 \subsection{Design desitions}
@@ -36,3 +52,15 @@ The following table lists the user requirements from the original system request
 	\item The link checker items page will have 15 items by default, 25 as a second option and 50 as the last one.
 	\item The Angular library will be used for the interface wherever it applies.
 \end{itemize}
+
+\subsection{Possible future features}
+After doing the requirements analysis, we've come to a list of possible future/extension features which we list below:
+\begin{itemize}
+	\item Groups/companies.
+	\item Distinguished user as manager for a group/company.
+	\item New low user level with less permission and under a manager's group/company.
+	\item Managers are the only users able to create projects and assign users to it.
+	\item low users can only create links on their assigned project.
+\end{itemize}
+
+This features can be accomodated in a new project if needed.
