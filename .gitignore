@@ -1,0 +1,6 @@
+Documentation/Sources/*.aux
+Documentation/Sources/*.log
+Documentation/Sources/*.out
+Documentation/Sources/*.synctex.gz
+Documentation/Sources/*.xwm
+
