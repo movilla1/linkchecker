@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Project;
 
-class ProjectController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +36,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project = new Project();
+        $project->title = $request->input('title');
+        $project->link = $request->input('link');
+        $ret=$project->save();
     }
 
     /**
@@ -70,7 +73,15 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        if ($request->method!="post")
+        return \redirect("Project@index",["notice"=>"Wrong call"]);
+        $project->title = $request->input('title');
+        $project->link = $request->input('link');
+        $ret=$project->save();
+        if ($ret)
+            return \redirect("Project@index",["notice"=>"Project #{$project->id} Updated properly"]);
+        else
+            return \redirect("Project@index",["notice"=>"Project #{$project->id}  failed to Update"]);
     }
 
     /**
@@ -81,8 +92,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $project->deleted=true;
-        $project->save();
-        return true;
+        $project->delete();
+        return \redirect("Project@index",["notice"=>"Project deleted"]);
     }
 }
