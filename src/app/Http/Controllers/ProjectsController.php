@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Project;
 
+
 class ProjectsController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view("projects.index",['projects'=>Project::all()]);
+        $projects=Project::all();
+        return view("projects.index",['projects'=>$projects]);
     }
 
     /**
@@ -40,6 +42,7 @@ class ProjectsController extends Controller
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $ret=$project->save();
+        return \redirect()->route("projects.index",["notice"=>"Project stored"]);
     }
 
     /**
@@ -73,15 +76,13 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        if ($request->method!="post")
-        return \redirect("Project@index",["notice"=>"Wrong call"]);
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $ret=$project->save();
         if ($ret)
-            return \redirect("Project@index",["notice"=>"Project #{$project->id} Updated properly"]);
+            return \redirect()->route("projects.index",["notice"=>"Project #{$project->id} Updated properly"]);
         else
-            return \redirect("Project@index",["notice"=>"Project #{$project->id}  failed to Update"]);
+            return \redirect()->route("projects.index",["notice"=>"Project #{$project->id}  failed to Update"]);
     }
 
     /**
@@ -93,6 +94,6 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return \redirect("Project@index",["notice"=>"Project deleted"]);
+        return \redirect()->route("Projects@index",["notice"=>"Project deleted"]);
     }
 }
