@@ -11,5 +11,18 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.autoload({
+        jquery: ['$', 'window.jQuery',"jQuery","window.$","jquery","window.jquery"],
+        tether: ['Tether', 'window.Tether']
+    })
+    .styles([
+        'resources/assets/css/bootstrap.min.css',
+        'resources/assets/css/font-awesome.min.css',
+        'resources/assets/css/style.default.css'
+   ], 'public/css/app.css')
+   .js([
+        'resources/assets/js/bootstrap.min.js',
+        'resources/assets/js/front.js',
+        'resources/assets/js/jquery.validate.min.js',
+        'resources/assets/js/jquery.cookie.js',
+   ], 'public/js/app.js')
