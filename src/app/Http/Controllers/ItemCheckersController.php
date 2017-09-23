@@ -42,7 +42,7 @@ class ItemCheckersController extends Controller
         $item->backlink = $request->input('backlink');
         $item->website = $request->input('website');
         $item->project_id = $request->input('project_id');
-        $item->user_id = current_user->id;
+        $item->user_id =  Auth::user()->id;
         $ret=$item->save();
     }
 
