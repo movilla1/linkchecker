@@ -80,7 +80,7 @@ class ItemCheckersController extends Controller
         $itemChecker->backlink = $request->input('backlink');
         $itemChecker->website = $request->input('website');
         $itemChecker->project_id = $request->input('project_id');
-        $itemChecker->user_id = current_user->id;
+        $itemChecker->user_id =  Auth::user()->id;
         $ret=$itemChecker->save();
     }
 
