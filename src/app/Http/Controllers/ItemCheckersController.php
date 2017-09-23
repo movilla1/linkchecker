@@ -39,6 +39,11 @@ class ItemCheckersController extends Controller
     public function store(Request $request)
     {
         $item = new ItemChecker();
+        $item->backlink = $request->input('backlink');
+        $item->website = $request->input('website');
+        $item->project_id = $request->input('project_id');
+        $item->user_id = current_user->id;
+        $ret=$item->save();
     }
 
     /**
@@ -72,7 +77,11 @@ class ItemCheckersController extends Controller
      */
     public function update(Request $request, ItemChecker $itemCheckers)
     {
-        //
+        $itemChecker->backlink = $request->input('backlink');
+        $itemChecker->website = $request->input('website');
+        $itemChecker->project_id = $request->input('project_id');
+        $itemChecker->user_id = current_user->id;
+        $ret=$itemChecker->save();
     }
 
     /**
