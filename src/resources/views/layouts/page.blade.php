@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page home-page">
+<div class="page">
     <!-- Main Navbar-->
     <header class="header">
     <nav class="navbar">
@@ -33,15 +33,8 @@
             <!-- Sidebar Navidation Menus-->
             <ul class="list-unstyled">
             <li class="active"> <a href="./"><i class="icon-home"></i>Home</a></li>
-            <li> <a href="charts.html"> <i class="fa fa-users"></i>Users </a></li>
-            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Projects </a>
-                <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
-                <li><a href="#">Page 4</a></li>
-                </ul>
-            </li>
+            <li><a href=""> <i class="fa fa-users"></i>Users </a></li>
+            <li><a href=""> <i class="icon-interface-windows"></i>Projects</a></li>
         </nav>
         <div class="content-inner">
             <!-- Page Header-->
