@@ -15,6 +15,10 @@ class CreateItemCheckersTable extends Migration
     {
         Schema::create('item_checkers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("backlink");
+            $table->string("website");
+            $table->integer("user_id");
+            $table->integer("project_id");
             $table->timestamps();
         });
     }

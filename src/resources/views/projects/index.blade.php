@@ -19,8 +19,8 @@
     <div class="col-md-4"><a href="{{route("projects.show",['id'=> $project->id]) }}">{{ $project->title }}</a></div>
     <div class="col-md-5"><a href="{{$project->link}}" title="Open link" target="_blank">{{$project->link}}</a></div>
     <div class="col-md-2">
-      <a href="{{route('projects.edit',['id'=>$project->id])"><span class="icon icon-edit"></span></a>
-      <a href="{{route('projects.destroy',['id'=>$project->id])"><span class="icon icon-delete"></span></a>
+      <a href="{{route('projects.edit',['id'=>$project->id])}}"><span class="icon icon-edit"></span></a>
+      <a href="{{route('projects.destroy',['id'=>$project->id,'method'=>'delete'])}}"><span class="icon icon-delete"></span></a>
     </div>
   </div>
  @endforeach
