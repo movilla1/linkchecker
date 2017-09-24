@@ -21,7 +21,7 @@
             </div>
             <div class="right-col col-lg-4 d-flex align-items-center">
               <div class="actions"><a class="btn btn-sm btn-success" href="{{route("projects.show",['id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Check</a></div>
-              <div class="actions"><a class="btn btn-sm btn-secondary" href="{{route('projects.edit',['id'=>$project->id]) }}"><i class="fa fa-pencil"></i>&nbsp;Edit</a></div>
+              <div class="actions"><a class="btn btn-sm btn-info" href="{{route('projects.edit',['id'=>$project->id]) }}"><i class="fa fa-pencil"></i>&nbsp;Edit</a></div>
               <div class="actions"><a class="btn btn-sm btn-danger" href="{{route('projects.destroy',['id'=>$project->id]) }}" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i>&nbsp;Delete</a></div>
             </div>
         </div>
@@ -31,7 +31,7 @@
     <div class="row">
     <div class="col-md-12">No data</div>
     </div>
-    @endif
+  @endif
 </div>
 </section>
 
