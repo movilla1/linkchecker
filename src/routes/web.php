@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('projects',"ProjectsController");
-Route::resource('users', "usersController");
+Route::group(['middleware' => ['auth','role'], 'roles' => ['admin', 'user']], function (){
+    Route::view('/', 'home');
+    Route::resource('projects',"ProjectsController");
+});
+
+Route::group(['middleware' => ['auth','role'], 'roles' => ['admin']], function (){
+    Route::resource('users', "usersController");
+});

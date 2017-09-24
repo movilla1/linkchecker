@@ -48,4 +48,18 @@
         </div>
     </div>
 </div>
+<!-- Page Footer-->
+<footer class="main-footer">
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-6">
+        <p>Zaitek &copy; 2017</p>
+    </div>
+    <div class="col-sm-6 text-right">
+        <p>Developed by <a href="http://www.elcansoftware.com">Elcan Software</a> - Design based on <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
+        <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)--></p>
+    </div>
+    </div>
+</div>
+</footer>
 @endsection
