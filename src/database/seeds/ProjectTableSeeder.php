@@ -15,6 +15,7 @@ class ProjectTableSeeder extends Seeder
         $project = new Project();
         $project->title = "Elcan Software";
         $project->link = "www.elcansoftware.com";
+        $project->user_id = 1;
         $project->save();
     }
 }
