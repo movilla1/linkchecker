@@ -21,7 +21,7 @@
             </div>
             <div class="right-col col-lg-4 d-flex align-items-center">
               <div class="actions"><a class="btn btn-sm btn-success" href="{{route("projects.show",['id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Check</a></div>
-              <div class="actions"><a class="btn btn-sm btn-info" href="{{route('projects.edit',['id'=>$project->id]) }}"><i class="fa fa-pencil"></i>&nbsp;Edit</a></div>
+              <div class="actions"><button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i>&nbsp;Edit</button></div>
               <div class="actions"><a class="btn btn-sm btn-danger" href="{{route('projects.destroy',['id'=>$project->id]) }}" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i>&nbsp;Delete</a></div>
             </div>
         </div>
@@ -35,4 +35,19 @@
 </div>
 </section>
 
+<!-- Edit Modal -->
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Project</h4>
+      </div>
+      <div class="modal-body">
+        @include("projects._form",["route"=>array('projects.update', $project->id),"project"=>$project,"method"=>'patch'])
+      </div>
+    </div>
+
+  </div>
+</div>
 @endsection
