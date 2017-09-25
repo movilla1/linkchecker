@@ -17,9 +17,9 @@
             <!-- Navbar Menu -->
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
             <!-- User profile -->
-            <li class="nav-item"><a href="login.html" class="nav-link logout">Mark Stephen</a></li>
+            <li class="nav-item">{{ Auth::user()->name }}</li>
             <!-- Logout    -->
-            <li class="nav-item"><a href="login.html" class="nav-link logout"><i class="fa fa-sign-out"></i></a></li>
+            <li class="nav-item"><a href="{{ Auth::logout() }}" class="nav-link logout"><i class="fa fa-sign-out"></i></a></li>
             </ul>
         </div>
         </div>
