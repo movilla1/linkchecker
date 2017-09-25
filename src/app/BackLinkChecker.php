@@ -1,8 +1,9 @@
 <?php
+namespace App;
 class BackLinkChecker {
   static function check_back_link($web,$link) {
     $page=BackLinkChecker::getPage($web);
-    $present = preg_match("/^.*<a.*?href=.{$link}.*?>.*$");
+    $present = preg_match("|<a.*?href=.".$link.".*?>|",$page);
     return ($present==1);
   }  
 
@@ -15,6 +16,6 @@ class BackLinkChecker {
     
     $page = curl_exec($ch);
     curl_close($ch);
-    return $page.body;
+    return $page;
   }
 }
