@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3855be9989930fc0908c047ed8828da2",
+    "content-hash": "7307173c9f58744a157640c900e00a41",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -760,6 +760,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v5.5.13",
             "source": {
                 "type": "git",
@@ -770,6 +771,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/bfbe20d32ee9f98c89df852847827407a5127be4",
                 "reference": "bfbe20d32ee9f98c89df852847827407a5127be4",
+=======
+            "version": "v5.5.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "56f1ffd0880255e9ebbf0dbf47024cc5c2941c7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/56f1ffd0880255e9ebbf0dbf47024cc5c2941c7a",
+                "reference": "56f1ffd0880255e9ebbf0dbf47024cc5c2941c7a",
+>>>>>>> 766d804935f5883bf07c40b7664c580563594ebd
                 "shasum": ""
             },
             "require": {
@@ -888,7 +901,11 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< HEAD
             "time": "2017-09-24T19:09:38+00:00"
+=======
+            "time": "2017-09-21T18:59:13+00:00"
+>>>>>>> 766d804935f5883bf07c40b7664c580563594ebd
         },
         {
             "name": "laravel/tinker",
