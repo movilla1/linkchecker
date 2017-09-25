@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ItemChecker;
 use App\User;
+use App\Project;
 use Illuminate\Http\Request;
 
 class ItemCheckersController extends Controller
@@ -15,8 +16,9 @@ class ItemCheckersController extends Controller
      */
     public function index()
     {
-        $items=ItemChecker::all();
-        return view("itemcheckers.index",['items'=>$items]);
+        $user = \Auth::User()->id;        
+        $projects = Project::where("user_id","=",$user)->get();
+        return view("itemcheckers.index",["projects"=>json_encode($projects)]);
     }
 
     /**
@@ -80,7 +82,7 @@ class ItemCheckersController extends Controller
         $itemChecker->backlink = $request->input('backlink');
         $itemChecker->website = $request->input('website');
         $itemChecker->project_id = $request->input('project_id');
-        $itemChecker->user_id =  Auth::user()->id;
+        $itemChecker->user_id =  \Auth::user()->id;
         $ret=$itemChecker->save();
     }
 
