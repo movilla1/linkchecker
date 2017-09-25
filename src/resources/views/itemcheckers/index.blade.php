@@ -29,7 +29,8 @@
     <div class="col-md-1"><%row.id%></div>
     <div class="col-md-4"><%row.website%></div>
     <div class="col-md-4"><%row.backlink%></div>
-    <div class="col-md-1"><%row.status%></div>
+    <div class="col-md-1" style="color: green" ng-if="statuses[row.id]==true"></div>
+    <div class="col-md-1" style="color: red" ng-if="statuses[row.id]==false"></div>
     <div class="col-md-2">
       <a href="{{route('items.index')}}/<%row.id%>/edit"><span class="icon icon-edit"></span></a>
       <a href="{{route('items.index')}}/<%row.id%>/delete" data-confirm="This will deactivate this site checking, are you sure?" data-method="delete"><span class="icon icon-delete"></span></a>
