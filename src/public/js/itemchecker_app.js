@@ -3,20 +3,27 @@ var itemChecker = angular.module('itemChecker', [], function($interpolateProvide
   $interpolateProvider.endSymbol('%>');
 });
 
-itemChecker.controller('itemlist',function($scope, ListDataService){
+itemChecker.controller('itemlist',function($scope, $http, ListDataService){
   $scope.LoadLinks = function(project,user) {
     $scope.ProjectName = project.title;
     $scope.ProjectURL = project.link;
     ListDataService.getItemData(project.id,user).then(function(result){
       $scope.ItemData = result.data;
-      $scope.ItemData.forEach(function(curr,idx){
-        ListDataService.checkStatus(curr).then(function(res){
-          $scope.Statuses[curr.id]=res;
-        });
-      })
     });
   }
+  $scope.CheckAllLinks = function() {
+    angular.forEach($scope.ItemData, function(val,idx) {
+      $http.get("api/check_item?row_id="+val.id).then(function(res) {
+        color = (res.data == '1') ? "green":"red";
+        $scope.statuses[val.id] = {"background-color": color}
+      })
+    })
+  }
+  $scope.linkIsActive = function(rowid) {
+    return $scope.statuses[rowid];
+  }
 });
+
 itemChecker.$inject = ['$scope', 'ListDataService'];
 itemChecker.factory('ListDataService', ['$http', '$q', function($http) {
   var factory = {
@@ -26,13 +33,6 @@ itemChecker.factory('ListDataService', ['$http', '$q', function($http) {
         url: "api/list_item_json?project_id="+project+"&uid="+user
       });
       return data;
-    },
-    checkStatus: function(row) {
-      var page = $http({
-        method: "GET",
-        url: "api/check_item?row_id"+row.id
-      });
-      return page.data;
     }
   }
   return factory;
