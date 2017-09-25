@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('projects',"ProjectsController")->middleware('auth');
+Route::resource('items',"ItemCheckersController")->middleware('auth');
+Route::get("/api/list_item_json","ApiController@list_items_json")->middleware("auth");
+Route::get("/api/check_item","ApiController@check_item")->middleware("auth");

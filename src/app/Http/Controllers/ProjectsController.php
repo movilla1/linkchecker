@@ -41,6 +41,7 @@ class ProjectsController extends Controller
         $project = new Project();
         $project->title = $request->input('title');
         $project->link = $request->input('link');
+        $project->user_id = \Auth::user()->id;
         $ret=$project->save();
         return \redirect()->route("projects.index",["notice"=>"Project stored"]);
     }
