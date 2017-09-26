@@ -18,6 +18,12 @@
     <div class="col-md-8">
     {{Form::text("backlink",null,["class"=>"inputbox","size"=>"50"])}}
     </div>
+  </div><br/><br/>
+  {{Form::hidden("project_id",$project->id)}}
+  <div class="row">
+    <div class="col-md-6">{{Form::submit("Save",["class"=>"btn btn-primary"])}}</div>
+    <div class="col-md-6">
+        <a class="btn btn-secondary" href="{{route("items.index") }}" id="cancel">Cancel</a>
+    </div>
   </div>
-  {{Form::hidden("project_id",$project_id)}}
   {{ Form::close()}}

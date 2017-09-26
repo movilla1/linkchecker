@@ -31,7 +31,8 @@ class ItemsController extends Controller
     {
         $item=new ItemChecker();
         $project_id = Req::input("project_id");
-        return view("items.create",['item'=>$item, "project_id"=>$project_id]);
+        $project = Project::find($project_id);
+        return view("items.create",['item'=>$item, "project"=>$project]);
     }
 
     /**
@@ -56,10 +57,10 @@ class ItemsController extends Controller
      * @param  \App\ItemChecker $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function show(ItemChecker $itemChecker)
+    public function show(ItemChecker $item)
     {
-        $project = Project::find($itemChecker->project_id);
-        return view("items.show",["item"=>$itemChecker, "project"=>$project]);
+        $project = Project::find($item->project_id);
+        return view("items.show",["item"=>$item, "project"=>$project]);
     }
 
     /**
@@ -68,7 +69,7 @@ class ItemsController extends Controller
      * @param  \App\ItemChecker  $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function edit(ItemChecker $itemChecker)
+    public function edit(ItemChecker $item)
     {
         return view("items.edit",['item'=>$itemChecker]);
     }
@@ -80,14 +81,14 @@ class ItemsController extends Controller
      * @param  \App\ItemChecker  $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemChecker $itemChecker)
+    public function update(Request $request, ItemChecker $item)
     {
-        $itemChecker->backlink = $request->input('backlink');
-        $itemChecker->website = $request->input('website');
-        $itemChecker->project_id = $request->input('project_id');
-        $itemChecker->user_id =  \Auth::user()->id;
-        $ret=$itemChecker->save();
-        return \redirect()->route("items.index",["notice"=>"Item ##{$itemChecker->id} Updated"]);
+        $item->backlink = $request->input('backlink');
+        $item->website = $request->input('website');
+        $item->project_id = $request->input('project_id');
+        $item->user_id =  \Auth::user()->id;
+        $ret=$item->save();
+        return \redirect()->route("items.index",["notice"=>"Item ##{$item->id} Updated"]);
     }
 
     /**
@@ -96,9 +97,9 @@ class ItemsController extends Controller
      * @param  \App\ItemChecker  $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ItemChecker $itemChecker)
+    public function destroy(ItemChecker $item)
     {
-        $itemChecker->delete();
-        return \redirect()->route("items.index",["notice"=>"item #{$itemChecker->id} Deleted"]);
+        $item->delete();
+        return \redirect()->route("items.index",["notice"=>"item #{$item->id} Deleted"]);
     }
 }

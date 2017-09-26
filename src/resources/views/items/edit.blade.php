@@ -9,6 +9,6 @@
 @endsection
 @section('page-content')
 <div class="container-fluid">
-    @include("items._form",["item"=>$item,"method"=>'patch'])
+@include("items._form",["route"=>array('items.update', $item->id), "project"=>$project,"item"=>$item,"method"=>'patch'])
 </div>
 @endsection
