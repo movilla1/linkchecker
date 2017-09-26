@@ -14,8 +14,8 @@ itemChecker.controller('itemlist',function($scope, $http, ListDataService){
   $scope.CheckAllLinks = function() {
     angular.forEach($scope.ItemData, function(val,idx) {
       $http.get("api/check_item?row_id="+val.id).then(function(res) {
-        color = (res.data == '1') ? "green":"red";
-        $scope.statuses[val.id] = {"background-color": color}
+        color = (res.data == '1') ? "status-green":"status-red";
+        $scope.statuses[val.id] =  color;
       })
     })
   }

@@ -5,3 +5,17 @@
   border: 1px solid black;
   border-radius: 4px;
 }
+.status-green {
+  background-color: green;
+}
+.status-red {
+  background-color: red;
+}
+
+.row-color-0 {
+ margin-top: 10px;
+}
+
+.row-color-1 {
+  margin-top: 10px;
+}

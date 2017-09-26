@@ -1,8 +1,4 @@
 @extends('layouts.page')
-<link href="{{URL::asset('css/itemchecker.css')}}" rel="stylesheet" />
-<script type="text/javascript" 
-  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script type="text/javascript" src="{{URL::asset('js/itemchecker_app.js')}}"></script>
 @section("page-title")
     Items
 @endsection
@@ -13,6 +9,10 @@
 @endsection
 
 @section('page-content')
+<link href="{{URL::asset('css/itemchecker.css')}}" rel="stylesheet" />
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script type="text/javascript" src="{{URL::asset('js/itemchecker_app.js')}}"></script>
 <div class="container-fluid" ng-app='itemChecker' ng-init='projects=<?=$projects?>;statuses=[]' ng-controller="itemlist">
   <div class="row">
       <div class="col-md-8">
@@ -26,11 +26,6 @@
       <button type="button" ng-click="CheckAllLinks()" title="Refresh statuses"><span class="fa fa-refresh"></span></button>
       </div>
   </div>
-  <div class="row">
-    <div class="col-md-2 right">
-     
-    </div>
-  </div>
   <div class="row" ng-if="!ErrorMsg">
     <div class="col-md-1"><h3>#</h3></div>
     <div class="col-md-4"><h3>Website</h3></div>
@@ -43,7 +38,7 @@
     <div class="col-md-4"><%row.website%></div>
     <div class="col-md-4"><%row.backlink%></div>
     <div class="col-md-1">
-      <span ng-style='<% statuses[row.id] %>' class="blank-status">&nbsp;</span>
+      <div class='blank-status ' ng-class='statuses[row.id]'>&nbsp;</div>
     </div>
     <div class="col-md-2">
       <a href="{{route('items.index')}}/<%row.id%>/edit"><span class="icon icon-edit"></span></a>
