@@ -28,7 +28,7 @@
             <div class="user"><span class="hidden-sm-down"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $project->user->name }}</span></div>
             </div>
             <div class="right-col col-lg-4 d-flex align-items-center">
-              <div class="actions"><a class="btn btn-sm btn-success" href="{{route("projects.show",['id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Check</a></div>
+              <div class="actions"><a class="btn btn-sm btn-success" href="{{route("projects.show",['id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Open</a></div>
               <div class="actions"><a class="btn btn-sm btn-info" href="{{route("projects.edit",['id'=> $project->id]) }}"><i class="fa fa-pencil"></i>&nbsp;Edit</a></div>
               <div class="actions">
                 {!! Form::open([
