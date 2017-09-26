@@ -30,7 +30,15 @@
             <div class="right-col col-lg-4 d-flex align-items-center">
               <div class="actions"><a class="btn btn-sm btn-success" href="{{route("projects.show",['id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Check</a></div>
               <div class="actions"><a class="btn btn-sm btn-info" href="{{route("projects.edit",['id'=> $project->id]) }}"><i class="fa fa-pencil"></i>&nbsp;Edit</a></div>
-              <div class="actions"><a class="btn btn-sm btn-danger" href="{{route("projects.destroy",['id'=>$project->id]) }}" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i>&nbsp;Delete</a></div>
+              <div class="actions">
+                {!! Form::open([
+                    'method' => 'DELETE',
+                    'route' => ['projects.destroy', $project->id]
+                ]) !!}
+                  <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">
+                  <i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                {!! Form::close() !!}
+              </div>
             </div>
         </div>
       </div>
