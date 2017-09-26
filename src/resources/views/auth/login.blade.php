@@ -40,7 +40,7 @@
 
                             @endif
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <input class="input-material" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                            <input class="input-material" id="email" type="email" class="form-control" name="email" required>
                             <label class="label-material" for="email" class="col-md-4 control-label">E-Mail Address</label>
                         </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
