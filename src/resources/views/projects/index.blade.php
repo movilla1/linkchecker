@@ -17,7 +17,7 @@
                 <h3 class="h4">{{ $project->title }}</h3><small>{{$project->link}}</small>
               </div>
             </div>
-            <div class="user"><span class="hidden-sm-down"><i class="fa fa-user"></i>&nbsp;&nbsp;Mark Stephen</span></div>
+            <div class="user"><span class="hidden-sm-down"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $project->user->name }}</span></div>
             </div>
             <div class="right-col col-lg-4 d-flex align-items-center">
               <div class="actions"><a class="btn btn-sm btn-success" href="{{route("projects.show",['id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Check</a></div>

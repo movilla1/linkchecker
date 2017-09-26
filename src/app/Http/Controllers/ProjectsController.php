@@ -17,6 +17,8 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects=Project::all();
+        foreach($projects as $project)
+            $project->user = User::where('id', '=', $project->user_id)->first();
         return view("projects.index",['projects'=>$projects]);
     }
 
