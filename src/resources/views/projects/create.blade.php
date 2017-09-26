@@ -1,10 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('layouts.page')
+@section('page-title')
+    Create Project
+@endsection
+@section('page-content')
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12"><h1>New Project</h1></div>
-  </div>
   @include("projects._form",["route"=>array('projects.store'),"project"=>$project,"method"=>"post"])
 </div>
 @endsection

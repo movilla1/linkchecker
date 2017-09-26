@@ -53,6 +53,7 @@
             </header>
             <br>    
             @yield('page-content')
+            <br>
         </div>
     </div>
 </div>
