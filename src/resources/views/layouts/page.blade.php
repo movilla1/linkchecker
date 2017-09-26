@@ -40,7 +40,14 @@
             <!-- Page Header-->
             <header class="page-header">
             <div class="container-fluid">
-                <h2 class="no-margin-bottom">@yield('page-title')</h2>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h2 class="no-margin-bottom">@yield('page-title')</h2>
+                    </div>
+                    <div class="col-sm-2">
+                        @yield('actions')
+                    </div>
+                </div>
             </div>
             </header>
             <br>    

@@ -24,7 +24,7 @@
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
     <div class="col-md-4">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel">Cancel</button>
+      <a class="btn btn-secondary" href="{{route("projects.index") }}" id="cancel">Cancel</a>
     </div>
   </div>
 </script>
