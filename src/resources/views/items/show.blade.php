@@ -7,16 +7,9 @@
     <a href="{{route('items.create',["project_id"=>$project->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
   </div>
 @endsection
-@section('page-content')<style>
-select {
-  padding: 5px;
-  margin-right: 15px;
-  margin-top: 10px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-}
-</style>
+@section('page-content')
 <div class="container-fluid" ng-app='itemChecker' ng-init='projects={!!$project!!};statuses=[];ItemData={!! $links !!}' ng-controller="itemlist">
+  <div class="spinner hidden" id="spinner"><img src="/double_ring.svg" class="ajax-loader" /></div>
     <!-- Title -->
     <div class="project">
       <div class="row bg-white has-shadow">
@@ -27,7 +20,7 @@ select {
               </div>
           </div>
           <div class="text">
-            <h3><%ProjectURL%></h3>
+            <h3>{{$project->link}}</h3>
           </div>
         </div>
         <div class="right-col col-lg-1 d-flex align-items-center">
@@ -84,4 +77,9 @@ select {
       </div>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#spinner").hide();
+});
+</script>
 @endsection
