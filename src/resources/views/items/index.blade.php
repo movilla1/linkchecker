@@ -38,8 +38,8 @@
       <div class='blank-status ' ng-class='statuses[row.id]'>&nbsp;</div>
     </div>
     <div class="col-md-2">
-      <a href="{{route('items.index')}}/<%row.id%>/edit"><span class="icon icon-edit"></span></a>
-      <a href="{{route('items.index')}}/<%row.id%>/delete" data-confirm="This will deactivate this site checking, are you sure?" data-method="delete"><span class="icon icon-delete"></span></a>
+      <a href="{{route('items.index')}}/<%row.id%>/edit"><span class="fa fa-edit"></span></a>
+      <a href="{{route('items.index')}}/<%row.id%>/delete" data-confirm="This will deactivate this site checking, are you sure?" data-method="delete"><span class="fa fa-trash"></span></a>
     </div>
   </div>
  <div class="row" ng-if="ItemData.length<1">
