@@ -13,20 +13,21 @@ This system was developed using Laravel as the base framework, version 5.5.3, an
 Once all those software requirements are complete, you need to 
 
 \begin{enumerate}
-	\item create a database for the app in the server
-	\item upload the source into the server
-	\item open a shell console to the app
-	\item cd into the app uploaded folder (eg.: cd /home/linkchecker/public\_html)
-	\item run: \verb|composer install|
-	\item set the web server to use app/public as the document root 
-	\item edit the .env file and set the details for the app to run, specially the database details.
-	\item on the app folder you need to migrate the database in order to create the needed tables, to do so, we offer two alternatives:
+	\item Create a database for the app in the server,eg. in a command line you'll do: \verb|mysqladmin -u adminuser -p create linkcheckerdb|
+	\item Create a database user and grant permissions on the newly created database.
+	\item Upload the source into the server
+	\item Open a shell console to the app
+	\item Cd into the app uploaded folder (eg.: cd /home/linkchecker/public\_html)
+	\item Run: \verb|composer install|
+	\item Set the web server to use app/public as the document root 
+	\item Edit the .env file and set the details for the app to run, specially the database details.
+	\item On the app folder you need to migrate the database in order to create the needed tables, to do so, we offer two alternatives:
 	\begin{itemize}
 		\item \verb|php artisan migrate| 
 		\item \verb|php artisan migrate --seed|\footnote{This option allows the data population with sample items for all tables}
 	\end{itemize}
-	\item after this, your server should show the application properly and you can begin to use it.
 \end{enumerate}
+After this, your server should show the application properly and you can begin to use it.
 
 Please run the \verb|--seed| option unless you know exactly what you are doing, as this will create the default user and administration accounts and they will allow you to start working.
 
