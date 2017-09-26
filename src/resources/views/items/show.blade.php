@@ -4,10 +4,11 @@
 @endsection
 @section('actions')
   <div class="actions">
-    <a href="{{route('items.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
+    <a href="{{route('itemcheckers.create',['project_id'=>$project])}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
   </div>
 @endsection
 @section('page-content')
+{{var_dump($item)}}
 <link href="{{URL::asset('css/itemchecker.css')}}" rel="stylesheet" />
 <script type="text/javascript" 
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
@@ -16,7 +17,7 @@
 <div class="container-fluid" ng-app='itemChecker' ng-init='project={{$project}}?>;statuses=[]' ng-controller="itemlist">
   <div class="row">
       <div class="col-md-11">
-        <span class="project-title" >Project: {{$project_name}} - {{$project_url}}</span>
+        <span class="project-title" >Project: {!{$project->title}!} - {!{$project->url}!}</span>
       </div>
       <div class="col-md-1">
         <button type="button" ng-click="CheckAllLinks()" title="Refresh statuses"><span class="fa fa-refresh"></span></button>

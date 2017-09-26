@@ -6,8 +6,9 @@ use App\ItemChecker;
 use App\User;
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as Req;
 
-class ItemCheckersController extends Controller
+class ItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class ItemCheckersController extends Controller
     {
         $user = \Auth::User()->id;        
         $projects = Project::where("user_id","=",$user)->get();
-        return view("itemcheckers.index",["projects"=>json_encode($projects)]);
+        return view("items.index",["projects"=>json_encode($projects)]);
     }
 
     /**
@@ -29,7 +30,8 @@ class ItemCheckersController extends Controller
     public function create()
     {
         $item=new ItemChecker();
-        return view("itemcheckers.create",['item'=>$item]);
+        $project_id = Req::input("project_id");
+        return view("items.create",['item'=>$item, "project_id"=>$project_id]);
     }
 
     /**
@@ -51,50 +53,52 @@ class ItemCheckersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ItemChecker  $itemCheckers
+     * @param  \App\ItemChecker $itemChecker
      * @return \Illuminate\Http\Response
      */
     public function show(ItemChecker $itemChecker)
     {
-        return view("itemcheckers.show",["item"=>$itemChecker]);
+        $project = Project::find($itemChecker->project_id);
+        return view("items.show",["item"=>$itemChecker, "project"=>$project]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ItemChecker  $itemCheckers
+     * @param  \App\ItemChecker  $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function edit(ItemChecker $itemCheckers)
+    public function edit(ItemChecker $itemChecker)
     {
-        return view("itemcheckers.edit",['item'=>$itemChecker]);
+        return view("items.edit",['item'=>$itemChecker]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ItemChecker  $itemCheckers
+     * @param  \App\ItemChecker  $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemChecker $itemCheckers)
+    public function update(Request $request, ItemChecker $itemChecker)
     {
         $itemChecker->backlink = $request->input('backlink');
         $itemChecker->website = $request->input('website');
         $itemChecker->project_id = $request->input('project_id');
         $itemChecker->user_id =  \Auth::user()->id;
         $ret=$itemChecker->save();
+        return \redirect()->route("items.index",["notice"=>"Item ##{$itemChecker->id} Updated"]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ItemChecker  $itemCheckers
+     * @param  \App\ItemChecker  $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ItemChecker $itemCheckers)
+    public function destroy(ItemChecker $itemChecker)
     {
         $itemChecker->delete();
-        return \redirect()->route("itemcheckers.index",["notice"=>"item #{$itemChecker->id} Deleted"]);
+        return \redirect()->route("items.index",["notice"=>"item #{$itemChecker->id} Deleted"]);
     }
 }

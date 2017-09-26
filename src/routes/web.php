@@ -15,7 +15,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth','role'], 'roles' => ['admin', 'user']], function (){
     Route::view('/', 'home');
     Route::resource('projects',"ProjectsController");
-    Route::resource('items',"ItemCheckersController");
+    Route::resource('items',"ItemsController");
     Route::get("/api/list_item_json","ApiController@list_items_json");
     Route::get("/api/check_item","ApiController@check_item");
 });

@@ -5,6 +5,6 @@
 
 @section('page-content')
 <div class="container-fluid">
-  @include("items._form",["route"=>array('itemchecker.update', $item->id),"item"=>$item,"method"=>'patch'])
+  @include("items._form",["route"=>array('items.store', $item->id),"item"=>$item,"method"=>'post'])
 </div>
 @endsection
