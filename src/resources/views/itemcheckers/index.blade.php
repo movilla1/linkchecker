@@ -7,12 +7,9 @@
     <a href="{{route('items.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
   </div>
 @endsection
-
 @section('page-content')
-<link href="{{URL::asset('css/itemchecker.css')}}" rel="stylesheet" />
-<script type="text/javascript" 
-  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script type="text/javascript" src="{{URL::asset('js/itemchecker_app.js')}}"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+
 <div class="container-fluid" ng-app='itemChecker' ng-init='projects=<?=$projects?>;statuses=[]' ng-controller="itemlist">
   <div class="row">
       <div class="col-md-8">
