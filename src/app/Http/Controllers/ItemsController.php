@@ -60,7 +60,8 @@ class ItemsController extends Controller
     public function show(ItemChecker $item)
     {
         $project = Project::find($item->project_id);
-        return view("items.show",["item"=>$item, "project"=>$project]);
+        $links = ItemChecker::where("project_id","=",$project->id)->where("user_id","=",$item->user_id)->get();
+        return view("items.show",["item"=>$item, "project"=>$project,"links"=>json_encode($links)]);
     }
 
     /**
@@ -71,7 +72,8 @@ class ItemsController extends Controller
      */
     public function edit(ItemChecker $item)
     {
-        return view("items.edit",['item'=>$itemChecker]);
+        $project = Project::find($item->project_id);
+        return view("items.edit",['item'=>$item,"project"=>$project]);
     }
 
     /**

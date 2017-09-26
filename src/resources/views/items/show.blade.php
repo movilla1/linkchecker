@@ -8,12 +8,12 @@
   </div>
 @endsection
 @section('page-content')
-<link href="{{URL::asset('css/itemchecker.css')}}" rel="stylesheet" />
+<link href="{{URL::asset('/css/itemchecker.css')}}" rel="stylesheet" />
 <script type="text/javascript" 
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script type="text/javascript" src="{{URL::asset('js/itemchecker_app.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('/js/itemchecker_app.js')}}"></script>
 
-<div class="container-fluid" ng-app='itemChecker' ng-init='project={{$project}}?>;statuses=[]' ng-controller="itemlist">
+<div class="container-fluid" ng-app='itemChecker' ng-init='project={!!$project!!};statuses=[];ItemData={!!$links!!}' ng-controller="itemlist">
   <div class="row">
       <div class="col-md-11">
         <span class="project-title" >Project: {{$project->title}} - {{$project->link}}</span>
@@ -37,8 +37,8 @@
       <span ng-style='<% statuses[row.id] %>' class="blank-status">&nbsp;</span>
     </div>
     <div class="col-md-2">
-      <a href="{{route('items.index')}}/<%row.id%>/edit"><span class="icon icon-edit"></span></a>
-      <a href="{{route('items.index')}}/<%row.id%>/delete" data-confirm="This will deactivate this site checking, are you sure?" data-method="delete"><span class="icon icon-delete"></span></a>
+      <a href="{{route('items.index')}}/<%row.id%>/edit"><span class="fa fa-edit"></span></a>
+      <a href="{{route('items.index')}}/<%row.id%>/delete" data-confirm="This will deactivate this site checking, are you sure?" data-method="delete"><span class="fa fa-delete"></span></a>
     </div>
   </div>
  <div class="row" ng-if="ItemData.length<1">
