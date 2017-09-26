@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Project;
-
+use \Auth;
 
 class ProjectsController extends Controller
 {
@@ -16,9 +16,14 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects=Project::all();
-        foreach($projects as $project)
-            $project->user = User::where('id', '=', $project->user_id)->first();
+        if(\Auth::user()->hasRole("admin")){
+            $projects=Project::all();
+        } else {
+            $projects= Project::where("user_id","=",\Auth::user()->id)->get();
+        }
+        foreach($projects as $project) {
+            $project->user=User::find($project->user_id)->first();
+        }
         return view("projects.index",['projects'=>$projects]);
     }
 
@@ -56,7 +61,11 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        return view("projects.show",["project"=>$project]);
+        if ($project->user_id == \Auth::user()->id || \Auth::user()->hasRole("admin")) {
+           return view("projects.show",["project"=>$project]);
+        } else {
+            return redirect()->route("projects.index",["notice"=>"You are not authorized to view the project"]);
+        }
     }
 
     /**
@@ -67,7 +76,11 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("projects.edit",["project"=>$project]);
+        if ($project->user_id == \Auth::user()->id || \Auth::user()->hasRole("admin")) {
+            return view("projects.edit",["project"=>$project]);
+        } else {
+            return \redirect()->route("projects.index",["notice"=>"You are not authorized to edit the project"]);
+        }
     }
 
     /**
@@ -79,6 +92,9 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        if ($project->user_id != Auth::user()->id && !Auth::user()->hasRole("admin")){
+            return redirect()->route("projects.index",["notice"=>"You are not authorized to edit the project"]);
+        }
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $ret=$project->save();
@@ -96,7 +112,11 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-        $project->delete();
+        if ($project->user_id == Auth::user()->id || Auth::user()->hasRole("admin")) {
+            $project->delete();
+        } else {
+            return redirect()->route("projects.index",["notice"=>"You are not authorized to remove the project"]);
+        }
         return \redirect()->route("projects.index",["notice"=>"Project deleted"]);
     }
 }
