@@ -1,4 +1,12 @@
 @extends('layouts.page')
+@section("page-title")
+    Backlinks - Details
+@endsection
+@section('actions')
+  <div class="actions">
+    <a href="{{route('items.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
+  </div>
+@endsection
 @section('page-content')
 
 <div class="container-fluid">
