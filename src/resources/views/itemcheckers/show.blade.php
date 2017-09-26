@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section("page-title")
-    Backlinks - Details
+    Items - Details
 @endsection
 @section('actions')
   <div class="actions">

@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section("page-title")
-    Backlinks - Create Item
+    Items - Create Item
 @endsection
 
 @section('page-content')

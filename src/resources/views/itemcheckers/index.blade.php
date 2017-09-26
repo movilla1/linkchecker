@@ -4,7 +4,7 @@
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script type="text/javascript" src="{{URL::asset('js/itemchecker_app.js')}}"></script>
 @section("page-title")
-    Backlinks
+    Items
 @endsection
 @section('actions')
   <div class="actions">
