@@ -9,7 +9,7 @@
         <div class="navbar-holder d-flex align-items-center justify-content-between">
             <!-- Navbar Header-->
             <div class="navbar-header">
-            <!-- Navbar Brand --><a href="index.html" class="navbar-brand">
+            <!-- Navbar Brand --><a href="/" class="navbar-brand">
                 <div class="brand-text brand-big hidden-lg-down"><span>BackLink</span><strong>Checker</strong></div>
                 <div class="brand-text brand-small"><strong>BLC</strong></div></a>
             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -35,6 +35,7 @@
             <li><a href="./"><i class="icon-home"></i>Home</a></li>
             <li><a href="{{route('users.index') }}"> <i class="fa fa-users"></i>Users </a></li>
             <li><a href="{{route('projects.index') }}"> <i class="icon-interface-windows"></i>Projects</a></li>
+            <li><a href="{{route('items.index') }}"> <i class="fa fa-external-link"></i>Items</a></li>
         </nav>
         <div class="content-inner">
             <!-- Page Header-->
