@@ -19,7 +19,7 @@
             <!-- User profile -->
             <li class="nav-item">{{ Auth::user()->name }}</li>
             <!-- Logout    -->
-            <li class="nav-item"><a href="{{ Auth::logout() }}" class="nav-link logout"><i class="fa fa-sign-out"></i></a></li>
+            <li class="nav-item"><a href="/logout" class="nav-link logout"><i class="fa fa-sign-out"></i></a></li>
             </ul>
         </div>
         </div>
