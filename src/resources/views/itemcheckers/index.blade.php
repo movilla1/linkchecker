@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.page')
+@section('page-content')
 <link href="{{URL::asset('css/itemchecker.css')}}" rel="stylesheet" />
 <script type="text/javascript" 
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>

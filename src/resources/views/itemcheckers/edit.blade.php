@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('layouts.page')
+@section('page-content')
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12"><h1>Edit Item</h1></div>
