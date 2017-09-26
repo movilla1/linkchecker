@@ -10330,7 +10330,8 @@ return jQuery;
 __webpack_require__(2);
 __webpack_require__(4);
 __webpack_require__(5);
-module.exports = __webpack_require__(6);
+__webpack_require__(6);
+module.exports = __webpack_require__(7);
 
 
 /***/ }),
@@ -13611,6 +13612,50 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 		return !$.cookie(key);
 	};
 });
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+var itemChecker = angular.module('itemChecker', [], function ($interpolateProvider) {
+  $interpolateProvider.startSymbol('<%');
+  $interpolateProvider.endSymbol('%>');
+});
+
+itemChecker.controller('itemlist', function ($scope, $http, ListDataService) {
+  $scope.LoadLinks = function (project, user) {
+    $scope.ProjectName = project.title;
+    $scope.ProjectURL = project.link;
+    ListDataService.getItemData(project.id, user).then(function (result) {
+      $scope.ItemData = result.data;
+    });
+  };
+  $scope.CheckAllLinks = function () {
+    angular.forEach($scope.ItemData, function (val, idx) {
+      $http.get("api/check_item?row_id=" + val.id).then(function (res) {
+        color = res.data == '1' ? "status-green" : "status-red";
+        $scope.statuses[val.id] = color;
+      });
+    });
+  };
+  $scope.linkIsActive = function (rowid) {
+    return $scope.statuses[rowid];
+  };
+});
+
+itemChecker.$inject = ['$scope', 'ListDataService'];
+itemChecker.factory('ListDataService', ['$http', '$q', function ($http) {
+  var factory = {
+    getItemData: function getItemData(project, user) {
+      var data = $http({
+        method: 'GET',
+        url: "api/list_item_json?project_id=" + project + "&uid=" + user
+      });
+      return data;
+    }
+  };
+  return factory;
+}]);
 
 /***/ })
 /******/ ]);
