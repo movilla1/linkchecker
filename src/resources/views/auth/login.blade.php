@@ -12,8 +12,7 @@
                     <div class="logo">
                     <h1>BackLink Checker</h1>
                     </div>
-                    <p>Welcome to BackLink Checker</p>
-                    <p>Please sign in to continue</p>
+                    <p>Welcome, please sign in to continue</p>
                 </div>
                 </div>
             </div>
