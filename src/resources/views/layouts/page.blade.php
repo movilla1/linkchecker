@@ -40,6 +40,19 @@
             <li><a href="{{route('items.index') }}"> <i class="fa fa-external-link"></i>Items</a></li>
         </nav>
         <div class="content-inner">
+         <?php $notice = \Request::input("notice",false); ?>
+            <div class="row">
+                @if($notice)
+                  <div class="col-md-12">
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{$notice}}
+                    </div>
+                  </div>
+                @endif
+            </div>
             <!-- Page Header-->
             <header class="page-header">
             <div class="container-fluid">

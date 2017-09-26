@@ -13615,9 +13615,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var itemChecker = angular.module('itemChecker', [], function ($interpolateProvider) {
+/* WEBPACK VAR INJECTION */(function($) {var itemChecker = angular.module('itemChecker', ['SharedServices'], function ($interpolateProvider) {
   $interpolateProvider.startSymbol('<%');
   $interpolateProvider.endSymbol('%>');
 });
@@ -13628,6 +13628,7 @@ itemChecker.controller('itemlist', function ($scope, $http, ListDataService) {
     $scope.ProjectURL = project.link;
     ListDataService.getItemData(project.id, user).then(function (result) {
       $scope.ItemData = result.data;
+      $("#spinner").hide();
     });
   };
   $scope.CheckAllLinks = function () {
@@ -13635,6 +13636,7 @@ itemChecker.controller('itemlist', function ($scope, $http, ListDataService) {
       $http.get("/api/check_item?row_id=" + val.id).then(function (res) {
         color = res.data == '1' ? "status-green" : "status-red";
         $scope.statuses[val.id] = color;
+        $("#spinner").hide();
       });
     });
   };
@@ -13656,6 +13658,15 @@ itemChecker.factory('ListDataService', ['$http', '$q', function ($http) {
   };
   return factory;
 }]);
+
+angular.module('SharedServices', []).config(function ($httpProvider) {
+  var spinnerFunction = function spinnerFunction(data, headersGetter) {
+    $('#spinner').show();
+    return data;
+  };
+  $httpProvider.defaults.transformRequest.push(spinnerFunction);
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 /******/ ]);

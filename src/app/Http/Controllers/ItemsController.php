@@ -57,11 +57,11 @@ class ItemsController extends Controller
      * @param  \App\ItemChecker $itemChecker
      * @return \Illuminate\Http\Response
      */
-    public function show(ItemChecker $item)
+    public function show($project_id)
     {
-        $project = Project::find($item->project_id);
-        $links = ItemChecker::where("project_id","=",$project->id)->where("user_id","=",$item->user_id)->get();
-        return view("items.show",["item"=>$item, "project"=>$project,"links"=>json_encode($links)]);
+        $project = Project::find($project_id);
+        $links = ItemChecker::where("project_id","=",$project->id)->where("user_id","=",\Auth::user()->id)->get();
+        return view("items.show",["project"=>$project,"links"=>json_encode($links)]);
     }
 
     /**

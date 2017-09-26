@@ -1,4 +1,3 @@
-
 @extends('layouts.page')
 @section("page-title")
     Items
@@ -8,7 +7,8 @@
     <a href="{{route('items.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
   </div>
 @endsection
-@section('page-content')<style>
+@section('page-content')
+<style>
 select {
   padding: 5px;
   margin-right: 15px;
@@ -16,10 +16,28 @@ select {
   font-size: 1em;
   border: 1px solid #ccc;
 }
+.spinner {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1000;
+  background-color:grey;
+  opacity: .8;
+}
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
 </style>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 
 <div class="container-fluid" ng-app='itemChecker' ng-init='projects=<?=$projects?>;statuses=[]' ng-controller="itemlist">
+  <div class="spinner hidden" id="spinner"><img src="/double_ring.svg" class="ajax-loader" /></div>
     <!-- Title -->
     <div class="project">
       <div class="row bg-white has-shadow">
@@ -86,6 +104,10 @@ select {
         </div>
       </div>
     </div>
-</div>  
-<div ng-bind="statuses"></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#spinner").hide();
+});
+</script>
 @endsection

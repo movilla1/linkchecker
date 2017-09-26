@@ -1,4 +1,4 @@
-var itemChecker = angular.module('itemChecker', [], function($interpolateProvider) {
+var itemChecker = angular.module('itemChecker', ['SharedServices'], function($interpolateProvider) {
   $interpolateProvider.startSymbol('<%');
   $interpolateProvider.endSymbol('%>');
 });
@@ -9,6 +9,7 @@ itemChecker.controller('itemlist',function($scope, $http, ListDataService){
     $scope.ProjectURL = project.link;
     ListDataService.getItemData(project.id,user).then(function(result){
       $scope.ItemData = result.data;
+      $("#spinner").hide();
     });
   }
   $scope.CheckAllLinks = function() {
@@ -16,6 +17,7 @@ itemChecker.controller('itemlist',function($scope, $http, ListDataService){
       $http.get("/api/check_item?row_id="+val.id).then(function(res) {
         color = (res.data == '1') ? "status-green":"status-red";
         $scope.statuses[val.id] =  color;
+        $("#spinner").hide();
       })
     })
   }
@@ -37,3 +39,13 @@ itemChecker.factory('ListDataService', ['$http', '$q', function($http) {
   }
   return factory;
 }]);
+
+angular.module('SharedServices', [])
+.config(function ($httpProvider) {
+  var spinnerFunction = function (data, headersGetter) {
+    $('#spinner').show();
+    return data;
+  };
+  $httpProvider.defaults.transformRequest.push(spinnerFunction);
+})
+
