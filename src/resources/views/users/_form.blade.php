@@ -22,23 +22,30 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-1 offset-md-1">Password</div>
-    <div class="col-md-8">
-      {{ Form::text("password",null,["class"=>"inputbox","size"=>"70"])}}
-    </div>
+    @if(isset($user->id))
+      <div class="col-md-2 offset-md-1">New password</div>
+      <div class="col-md-7">
+          {{ Form::text("new_password", null, ["class"=>"inputbox","size"=>"58"])}}
+      </div>
+    @else
+      <div class="col-md-1 offset-md-1">Password</div>
+      <div class="col-md-8">
+          {{ Form::text("password", null, ["class"=>"inputbox","size"=>"70"])}}
+      </div>
+    @endif
   </div>
   <br>
   <div class="row">
     <div class="col-md-1 offset-md-1 pt-2">Role</div>
     <div class="col-md-8">
-      {{ Form::select('role', array(2 => 'Admin', 1 => 'User'), 1) }}
+      {{ Form::select('role', array(2 => 'Admin', 1 => 'User'), !isset($user->id) ? 1 : ($user->hasRole('admin') ? 2 : 1)) }}
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-md-1 offset-md-1 pt-2">Status</div>
     <div class="col-md-8">
-      {{ Form::select('active', array(1 => 'Active', 0 => 'Blocked'), 1) }}
+      {{ Form::select('active', array(1 => 'Active', 0 => 'Blocked'), !isset($user->id) ? 1 : $user->active) }}
     </div>
   </div>
   <br>
