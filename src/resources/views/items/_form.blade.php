@@ -33,9 +33,11 @@
   </div><br/><br/>
 
   <div class="row">
-    <div class="col-md-6">{{Form::submit("Save",["class"=>"btn btn-primary"])}}</div>
-    <div class="col-md-6">
-        <a class="btn btn-secondary" href="{{ url()->previous() }}" id="cancel">Cancel</a>
+    <div class="col-md-2 offset-md-2">
+      {{Form::submit("Save",["class"=>"btn btn-primary"])}}
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-secondary" href="{{ url()->previous() }}" id="cancel">Cancel</a>
     </div>
   </div>
   {{ Form::close()}}
