@@ -35,7 +35,8 @@ For a regular user, the home page will show as following:
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Users}
+\section{As Admin}
+\subsection{Users}
 This section can only be accessed by the admin user, the regular user will not be able to use it. you access this section by clicking the left side bar link that states ''Users'', and you get presented a screen like the one below.
 \begin{figure}[H]
 	\caption{Users Main Screen}
@@ -63,7 +64,7 @@ The Role dropdown can select any of the two available roles: Admin or User.
 The 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Trash}
+\subsection{Trash}
 This section is only visible to Admin users, it will list every item that has been removed by an user, and the admin will be able to remove it forever or restore, it also has an ''empty'' button to clear everything permanently. 
 The interface is shown on figure \ref{img:trash}
 
@@ -152,4 +153,11 @@ Items can also be edited and deleted as with the project, the interface is shown
 	\includegraphics[width=\textwidth]{images/items_edit}
 \end{figure}
 
-The item Add form is the same as edit form, but with blank fields so the user can fill them.
+The item Add form is the same as edit form, but with blank fields so the user can fill them. The only exception is if you click add before selecting the project on the items page, in this case the system will show the following screen:
+\begin{figure}[H]
+	\caption{Item Edit}
+	\label{img:itmadd}
+	\includegraphics[width=\textwidth]{images/items_add}
+\end{figure}
+The dropdown on projects must be selected, this will create the item in the proper project.
+
