@@ -30,9 +30,14 @@ class ItemsController extends Controller
     public function create()
     {
         $item=new ItemChecker();
-        $project_id = Req::input("project_id");
-        $project = Project::find($project_id);
-        return view("items.create",['item'=>$item, "project"=>$project]);
+        $project_id = Req::input("project_id",false);
+        if ($project_id) {
+            $project = Project::find($project_id);
+        } else {
+            $project=false;
+        }
+        $projects = Project::get_all_for_select();
+        return view("items.create",['item'=>$item, "project"=>$project, "projects"=>$projects]);
     }
 
     /**
@@ -47,7 +52,7 @@ class ItemsController extends Controller
         $item->backlink = $request->input('backlink');
         $item->website = $request->input('website');
         $item->project_id = $request->input('project_id');
-        $item->user_id =  Auth::user()->id;
+        $item->user_id =  \Auth::user()->id;
         $ret=$item->save();
     }
 

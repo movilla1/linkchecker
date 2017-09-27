@@ -3,8 +3,8 @@
     Items
 @endsection
 @section('actions')
-  <div class="actions">
-    <a href="{{route('items.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
+  <div class="actions" id="#act">
+    <a href="#act" onclick="add_item_to_current_prj()" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add</a>
   </div>
 @endsection
 @section('page-content')
@@ -28,7 +28,7 @@
         </div>
       </div> 
     </div>
-
+    <input type="hidden" id="project_id" name="project_id" value="<%ProjectID%>"/>
     <!-- Links -->
     <div class="col-lg-12">
       <div class="card">
@@ -52,7 +52,9 @@
             </thead>
             <tbody>
               <tr ng-repeat="row in ItemData">
-                <th scope="row"><%row.id%></th>
+                <th scope="row">
+                  <%row.id%>
+                </th>
                 <td><%row.website%></td>
                 <td><%row.backlink%></td>
                 <td>
@@ -61,7 +63,12 @@
                 <td>
                   <div class="btn-group">
                     <a class="btn btn-sm btn-info" href="{{route('items.index')}}/<%row.id%>/edit"><i class="fa fa-pencil"></i></a>
-                    <a class="btn btn-sm btn-danger" href="{{route('items.index')}}/<%row.id%>/delete" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i></a>
+                    <form ng-submit="delete_selected_item(row.id)" id="del<%row.id%>" method="post"/>
+                      {!! method_field("DELETE")!!}
+                      {!! csrf_field() !!}
+                      <input type="hidden" name="ignore" id="act<%row.id%>" value="{{route('items.index')}}" />
+                      <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+                    </form>
                   </div>
                 </td>
               </tr>
@@ -81,5 +88,15 @@
 $(document).ready(function(){
   $("#spinner").hide();
 });
+
+function add_item_to_current_prj() {
+  var project_id = $("#project_id").val() || "";
+  var item_route='{{route("items.create")}}';
+  var new_url=item_route;
+  if (project_id.length >= 1) {
+    new_url += "?project_id="+project_id;
+  }
+  window.location.href=new_url;
+}
 </script>
 @endsection

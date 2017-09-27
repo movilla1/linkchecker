@@ -13626,6 +13626,7 @@ itemChecker.controller('itemlist', function ($scope, $http, ListDataService) {
   $scope.LoadLinks = function (project, user) {
     $scope.ProjectName = project.title;
     $scope.ProjectURL = project.link;
+    $scope.ProjectID = project.id;
     ListDataService.getItemData(project.id, user).then(function (result) {
       $scope.ItemData = result.data;
       $("#spinner").hide();
@@ -13642,6 +13643,13 @@ itemChecker.controller('itemlist', function ($scope, $http, ListDataService) {
   };
   $scope.linkIsActive = function (rowid) {
     return $scope.statuses[rowid];
+  };
+  $scope.delete_selected_item = function (rowid) {
+    if (confirm("This will delete the row, Are you sure?")) {
+      var action = $("#act" + rowid).val();
+      $("#del" + rowid).attr("action", action + "/" + rowid);
+      $("#del" + rowid).submit();
+    }
   };
 });
 
