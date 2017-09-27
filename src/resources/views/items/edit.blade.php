@@ -12,7 +12,7 @@
   </div>
 @endsection
 @section('page-content')
-<div class="container-fluid">
+<div class="container-fluid pt-4 pb-4 bg-white has-shadow">
 @include("items._form",["route"=>array('items.update', $item->id), "project"=>$project,"item"=>$item,"method"=>'patch'])
 </div>
 @endsection
