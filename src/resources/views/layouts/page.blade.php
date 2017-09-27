@@ -35,6 +35,7 @@
             <li><a href="/"><i class="icon-home"></i>Home</a></li>
             @if(Auth::user()->hasRole("admin"))
                 <li><a href="{{route('users.index') }}"> <i class="fa fa-users"></i>Users </a></li>
+                <li><a href="{{route('trash')}}"> <i class="fa fa-trash"></i>Trash </a></li>
             @endif
             <li><a href="{{route('projects.index') }}"> <i class="icon-interface-windows"></i>Projects</a></li>
             <li><a href="{{route('items.index') }}"> <i class="fa fa-external-link"></i>Items</a></li>
