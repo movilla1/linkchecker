@@ -8,11 +8,11 @@ To use the system, you need to open a browser compatible with html5, like Google
 Proceed to the site url by opening the browser and at the address bar type: www.example.com[/install/path]\footnote{/install/path is optional and must be replaced by the installation path on the server, from the public\_html folder, relative, not absolute, so if the system is installed in ~/public\_html/checker, the url will be www.example.com/checker}
 You will be presented with the following screen:
 
-\begin{figure*}[ht!]
-	\caption{Login screenshot}
+\begin{figure}[H]
+	\caption{Login Screen}
 	\label{img:login}
 	\includegraphics[width=\textwidth]{images/login_screenshot}
-\end{figure*}
+\end{figure}
 
 You need to put the user name (which is the email registered), then the password and click "Login" to get into the system, if the username or password is wrong you will not be able to login.
 
@@ -20,12 +20,50 @@ You need to put the user name (which is the email registered), then the password
 
 \section{Users}
 This section can only be accessed by the admin user, the regular user will not be able to use it. you access this section by clicking the left side bar link that states ''Users'', and you get presented a screen like the one below.
-\begin{figure*}[ht!]
-	\caption{Users screenshot}
-	\label{img:login}
+\begin{figure}[H]
+	\caption{Users Main Screen}
+	\label{img:usrmain}
 	\includegraphics[width=\textwidth]{images/users_screenshot}
-\end{figure*}
+\end{figure}
 
 \section{Projects}
+This section is accessible to all users, for the admin it will show every project in the system, for the regular user, it will only list his/her own projects.
+
+The main screen is the one shown below:
+\begin{figure}[H]
+	\caption{Projects Main Screen}
+	\label{img:prjmain}
+	\includegraphics[width=\textwidth]{images/projects_screenshot}
+\end{figure}
+
+The +Add button opens the form to add a new project, showing the following page:
+\begin{figure}[H]
+	\caption{Projects Create}
+	\label{img:prjcreate}
+	\includegraphics[width=\textwidth]{images/project_create}
+\end{figure}
+
+The same form shows if you click the EDIT button, but pre-filled with the details for the project being edited, as is shown below
+\begin{figure}[H]
+	\caption{Projects Edit}
+	\label{img:prjedit}
+	\includegraphics[width=\textwidth]{images/project_edit}
+\end{figure}
+
+After clicking save you will get a confirmation message like the one shown in figure \ref{img:confirm}
+\begin{figure}[H]
+	\caption{Project Save Confirmation}
+	\label{img:confirm}
+	\includegraphics[width=\textwidth]{images/project_stored}
+\end{figure}
+
+The delete option sends everything to the trash bin, where the admin can chose to restore or delete the item permanently.
 
 \section{Items}
+
+The items section is accessible to all users, it will show the projects that the user owns and when selected, it will display the links to be checked, as shown in the following figure
+\begin{figure}[H]
+	\caption{Item Main Page}
+	\label{img:confirm}
+	\includegraphics[width=\textwidth]{images/items_main.png}
+\end{figure}
