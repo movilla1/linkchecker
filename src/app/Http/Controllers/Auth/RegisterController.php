@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -68,5 +68,14 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'role' => $data['role'],
         ]);
+    }
+    public function showRegistrationForm()
+    {
+        return redirect('login');
+    }
+    
+    public function register()
+    {
+    
     }
 }
