@@ -67,10 +67,10 @@
           </table>
         </div>
         <div class="row" ng-if="ItemData.length<1">
-          <div class="col-md-12"><div style="font-size: 18pt;text-align: center; margin-left: auto;margin-top: 30pt">No data</div></div>
+          <div class="col-md-12"><div style="font-size: 18pt;text-align: center; margin-left: auto; padding-bottom:30px;">No data</div></div>
         </div>
         <div class="row" ng-if="ErrorMsg">
-          <div class="col-md-12"><%ErrorMsg%></div>
+          <div class="col-md-12"><div style="font-size: 18pt;text-align: center; margin-left: auto; padding-bottom:30px;"><%ErrorMsg%></div></div>
         </div>
       </div>
     </div>
