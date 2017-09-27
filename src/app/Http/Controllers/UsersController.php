@@ -80,9 +80,11 @@ class UsersController extends Controller
      {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
+        $new_password = $request->input('new_password');
+        if(isset($new_password))
+            $user->password = bcrypt($new_password);
         $user->active = $request->input('active');
-        $user->roles()->attach($request->input('role'));
+        $user->roles()->sync($request->input('role'));
         $ret=$user->save();
 
         if ($ret)

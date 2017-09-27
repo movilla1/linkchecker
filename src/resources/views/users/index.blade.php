@@ -15,7 +15,6 @@ Users
 <div class="col-lg-12">
   <div class="card">
     <div class="card-header d-flex align-items-center">
-      <h3 class="h4">Available Users</h3>
     </div>
     <div class="card-body">
       @if(count($users) > 0)
