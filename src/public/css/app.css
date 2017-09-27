@@ -19,8 +19,30 @@ https://bootstrapious.com/p/admin-template
 *     GENERAL STYLES
 * ==========================================================
 */
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.main-div {
+  margin: 0 auto;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+}
+
 body {
-  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
 
 a, i, span {
@@ -1404,11 +1426,11 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 footer.main-footer {
   background: #2f333e;
   color: #fff;
-  padding: 10px;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
+  padding: 1rem;
 }
 
 footer.main-footer a {
