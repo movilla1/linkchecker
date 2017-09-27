@@ -35,7 +35,7 @@
   <div class="row">
     <div class="col-md-6">{{Form::submit("Save",["class"=>"btn btn-primary"])}}</div>
     <div class="col-md-6">
-        <a class="btn btn-secondary" href="{{route("items.index") }}" id="cancel">Cancel</a>
+        <a class="btn btn-secondary" href="{{ url()->previous() }}" id="cancel">Cancel</a>
     </div>
   </div>
   {{ Form::close()}}

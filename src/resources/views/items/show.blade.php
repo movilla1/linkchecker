@@ -13,7 +13,7 @@
     <!-- Title -->
     <div class="project">
       <div class="row bg-white has-shadow">
-        <div class="left-col col-lg-11 d-flex align-items-center justify-content-between">
+        <div class="left-col col-lg-10 d-flex align-items-center justify-content-between">
           <div class="project-title d-flex align-items-center">
               <div class="text">
                 {{$project->title}}
@@ -23,8 +23,8 @@
             <h3>{{$project->link}}</h3>
           </div>
         </div>
-        <div class="right-col col-lg-1 d-flex align-items-center">
-          <button class="btn btn-secondary" ng-click="CheckAllLinks()" title="Refresh statuses"><span class="fa fa-refresh"></span></button>
+        <div class="right-col col-lg-2 d-flex align-items-center">
+          <button class="btn btn-sm btn-info" ng-click="CheckAllLinks()" title="Refresh statuses"><i class="fa fa-refresh"></i> Refresh</button>
         </div>
       </div> 
     </div>
@@ -52,15 +52,15 @@
                   <div class='blank-status' ng-class='statuses[row.id]'>&nbsp;</div>
                 </td>
                 <td>
-                  <div class="btn-group">
-                    <a class="btn btn-sm btn-info" href="{{route('items.index')}}/<%row.id%>/edit"><i class="fa fa-pencil"></i></a>
-                    <form ng-submit="delete_selected_item(row.id)" id="del<%row.id%>" method="post"/>
-                      {!! method_field("DELETE")!!}
-                      {!! csrf_field() !!}
+                  <form ng-submit="delete_selected_item(row.id)" id="del<%row.id%>" method="post"/>
+                    {!! method_field("DELETE")!!}
+                    {!! csrf_field() !!}
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-info" href="{{route('items.index')}}/<%row.id%>/edit"><i class="fa fa-pencil"></i></a>
                       <input type="hidden" name="ignore" id="act<%row.id%>" value="{{route('items.index')}}" />
                       <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
-                    </form>
-                  </div>
+                    </div>
+                  </form>
                 </td>
               </tr>
             </tbody>

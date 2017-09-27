@@ -54,15 +54,15 @@
                   <div class='blank-status' ng-class='statuses[row.id]'>&nbsp;</div>
                 </td>
                 <td>
-                  <div class="btn-group">
-                    <a class="btn btn-sm btn-info" href="{{route('items.index')}}/<%row.id%>/edit"><i class="fa fa-pencil"></i></a>
-                    <form ng-submit="delete_selected_item(row.id)" id="del<%row.id%>" method="post"/>
-                      {!! method_field("DELETE")!!}
-                      {!! csrf_field() !!}
+                  <form ng-submit="delete_selected_item(row.id)" id="del<%row.id%>" method="post"/>
+                    {!! method_field("DELETE")!!}
+                    {!! csrf_field() !!}
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-info" href="{{route('items.index')}}/<%row.id%>/edit"><i class="fa fa-pencil"></i></a>
                       <input type="hidden" name="ignore" id="act<%row.id%>" value="{{route('items.index')}}" />
                       <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
-                    </form>
-                  </div>
+                    </div>
+                  </form>
                 </td>
               </tr>
             </tbody>
