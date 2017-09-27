@@ -32,13 +32,6 @@
     <!-- Links -->
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header d-flex align-items-center">
-          <div class="row">
-            <div class="col-lg-1 offset-lg-11">
-              
-            </div>
-          </div>
-        </div>
         <div class="card-body" ng-if="!ErrorMsg">
           <table class="table table-hover">
             <thead>
