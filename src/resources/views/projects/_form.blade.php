@@ -24,7 +24,7 @@
   <br>
   <div class="row">
     <div class="col-md-2 offset-md-2">
-     {{Form::submit("Save")}}
+      {{Form::submit("Save",["class"=>"btn btn-primary"])}}
     </div>
     <div class="col-md-4">
       <a class="btn btn-secondary" href="{{route("projects.index") }}" id="cancel">Cancel</a>
