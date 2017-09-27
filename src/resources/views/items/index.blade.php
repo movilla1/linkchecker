@@ -13,7 +13,7 @@
     <!-- Title -->
     <div class="project">
       <div class="row bg-white has-shadow">
-        <div class="left-col col-lg-11 d-flex align-items-center justify-content-between">
+        <div class="left-col col-lg-9 d-flex align-items-center justify-content-between">
           <div class="project-title d-flex align-items-center">
               <div class="text">
                 <select ng-model='projectData' ng-change="LoadLinks(projectData,{{\Auth::user()->id}})" ng-options="project.title for project in projects track by project.id"></select>
@@ -23,8 +23,8 @@
             <h3><%ProjectURL%></h3>
           </div>
         </div>
-        <div class="right-col col-lg-1 d-flex align-items-center">
-          <button class="btn btn-secondary" ng-click="CheckAllLinks()" title="Refresh statuses"><span class="fa fa-refresh"></span></button>
+        <div class="right-col col-lg-3 d-flex align-items-center">
+          <button class="btn btn-sm btn-info" ng-click="CheckAllLinks()" title="Refresh statuses"><i class="fa fa-refresh"></i> Refresh</button>
         </div>
       </div> 
     </div>
