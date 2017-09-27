@@ -3,6 +3,14 @@
 Users
 @endsection
 
+@section('actions')
+  <div class="actions">
+    <a class="btn btn-sm btn-primary" href="{{route("users.create") }}">
+      <i class="fa fa-plus"></i>&nbsp;Add
+    </a>
+  </div>
+@endsection
+
 @section('page-content')
 <div class="col-lg-12">
   <div class="card">
