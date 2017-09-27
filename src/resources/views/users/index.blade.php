@@ -47,10 +47,17 @@ Users
                   <td class="text-danger">Blocked</td>
                 @endif
                 <td>
-                  <div class="btn-group">
-                    <a class="btn btn-sm btn-info" href="{{route('users.edit',['id'=>$user->id]) }}"><i class="fa fa-pencil"></i></a>
-                    <a class="btn btn-sm btn-danger" href="{{route('users.destroy',['id'=>$user->id]) }}" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i></a>
-                  </div>
+                    
+                    {!! Form::open([
+                    'method' => 'DELETE',
+                    'route' => ['users.destroy', $user->id]
+                    ]) !!}
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-info" href="{{route('users.edit',['id'=>$user->id]) }}"><i class="fa fa-pencil"></i></a>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i></button>
+                      </div>
+                    {!! Form::close() !!}
+                    
                 </td>
               </tr>
             @endforeach
