@@ -12,7 +12,7 @@
              @if (isset($trash))
              <div class="actions"><a class="btn btn-sm btn-success" href="{{route('trash_unerase_project',['project'=> $project]) }}"><i class="fa fa-reply"></i>&nbsp;Restore</a></div><div class="col-sm-1"></div>
              @else
-              <div class="actions"><a class="btn btn-sm btn-success" href="{{route("project_items",['project_id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Open</a></div><div class="col-sm-1"></div>
+              <div class="actions"><a class="btn btn-sm btn-success" href="{{route("project_items",['project_id'=> $project->id]) }}"><i class="fa fa-check"></i>&nbsp;Open</a></div>
               <div class="actions"><a class="btn btn-sm btn-info" href="{{route("projects.edit",['id'=> $project->id]) }}"><i class="fa fa-pencil"></i>&nbsp;Edit</a></div>
              @endif
               <div class="actions">
