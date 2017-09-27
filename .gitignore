@@ -3,4 +3,5 @@ Documentation/*/*.log
 Documentation/*/*.out
 Documentation/*/*.synctex.gz
 Documentation/*/*.xwm
+Documentation/*/*.toc
 
