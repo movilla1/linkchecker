@@ -6,7 +6,7 @@ class BackLinkChecker {
     $ret=false;
     $present = preg_match_all('/<a\s+.*?href=[\"\']?([^\"\' >]*)[\"\']?[^>]*>(.*?)<\/a>/i', $page, $matches, PREG_SET_ORDER);
     foreach ($matches as $match) {
-      $ret |= (strcasecmp($match[1],$link)==0); //Compare in case insensitive form
+      $ret |= (stripos($match[1],$link)!==false); //Compare in case insensitive form
     }
     return $ret;
   }  

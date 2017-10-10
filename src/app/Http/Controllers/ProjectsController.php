@@ -64,7 +64,7 @@ class ProjectsController extends Controller
         if ($project->user_id == \Auth::user()->id || \Auth::user()->hasRole("admin")) {
            return view("projects.show",["project"=>$project]);
         } else {
-            return redirect()->route("projects.index",["notice"=>"You are not authorized to view the project"]);
+            return \redirect()->route("projects.index",["notice"=>"You are not authorized to view the project"]);
         }
     }
 

@@ -54,6 +54,7 @@ class ItemsController extends Controller
         $item->project_id = $request->input('project_id');
         $item->user_id =  \Auth::user()->id;
         $ret=$item->save();
+        return \redirect()->route("items.index",["notice"=>"Item ##{$item->id} stored"]);
     }
 
     /**
